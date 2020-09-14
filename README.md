@@ -1,23 +1,20 @@
-- 9/8 공부 내용
-  - DataLoader 공부하던 도중 관련된 사이트를 찾아서 공부
-    - https://tutorials.pytorch.kr/beginner/data_loading_tutorial.html
-    - 실습 : https://wingnim.tistory.com/33
-  - 해결하지 못 한 내용
-    - data_transform 부분에서, normalize 행렬을 어떤 기준으로 설정한건지
-    - 매 step마다 optimizer.zero_grad() 처리를 하는 이유가 뭔지
-    - 매 step마다 loss, critereon 값을 mixup 하는 이유가 뭔지
-    - 맨 처음에, torch의 모든 함수들에 대해 seed값을 고정시키는 이유가 뭔지
-  
-- 9/9 공부내용
-  - data augmentation 실습
-    - https://www.kaggle.com/yangsaewon/want-to-see-my-augmentations-pytorch
-  - k fold 나누기 실습
-    - https://www.kaggle.com/yangsaewon/how-to-split-folds-and-train
-    - k fold 를 만들어내는 과정이 잘 이해가 안 됨. 마저 공부 필요
-  - 정확도 0.9 baseline 실습
-    - 계속 training을 하는데 GPU 에러가 남 (`device-side assert triggered`에러)
-      - training 데이터의 클래스에서 문제가 생긴 것 같음
-      - 1 epoch 조차도 못 돌리는 중
-  - 모르는 내용 참조
-    - https://www.kaggle.com/tmheo74/3rd-ml-month-12th-solution
-    - 현재 내가 공부하고 있는 baseline 을 기반으로 추가한 코드. 내일 공부 필요
+- 9/14 공부 내용
+  - 코드 refactoring 하는 중
+    - 소스 : https://www.kaggle.com/tmheo74/3rd-ml-month-12th-solution
+  - 질문 사항
+    - AdamW
+      - closure 역할이 뭔지 모르겠다
+      - 왜 adam 은 sparse gradient를 처리할 수 없는가
+      - exponential moving average 처리는 왜 하는거지
+    - CosineAnnealingWithRestartsLR
+  - 알게된 내용
+    - AdamW
+      - weight decay regularization 이 뭔가? 이걸 왜 adam 방식에 적용하려 하는건가?
+        - 참조 : https://hiddenbeginner.github.io/deeplearning/paperreview/2019/12/29/paper_review_AdamW.html
+        - weight 값을 조절해서, 오버피팅을 막기 위함 
+          - regularization과 유사함
+          - 단, Adam의 경우엔 regularization과 동일하다고 할 수 없다
+    - CosineAnnealingWithRestartsLR
+      - generalization : train/test 에서의 성능 차이가 적을수록, generalization이 잘 이뤄졌다고 한다
+      - 이 generalization을 촉진하기 위해, learning rate를 주기적으로 증폭시켜준다
+        - 이렇게 함으로서, local maxima에 빠지는 것을 방지한다
