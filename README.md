@@ -17,4 +17,14 @@
     - CosineAnnealingWithRestartsLR
       - generalization : train/test 에서의 성능 차이가 적을수록, generalization이 잘 이뤄졌다고 한다
       - 이 generalization을 촉진하기 위해, learning rate를 주기적으로 증폭시켜준다
-        - 이렇게 함으로서, local maxima에 빠지는 것을 방지한다
+        - 이렇게 함으로서, local maxima에 빠지는 것을 방지한다-
+
+- 9/15 공부 내용
+  - 질문할 내용
+    - CosineAnnealingWithRestartsLR
+      - T_max, T_mult 등.. 의미?
+    - efficient training 와 efficientNet 차이점?
+    - mixup_criterion 과 mixup_data 의 역할? 
+      - 관련 수식/논문이 있을까?
+    - subpolicy는 무슨 역할을 하는거지?
+    - data_transform 각각에 policy가 사용된다
