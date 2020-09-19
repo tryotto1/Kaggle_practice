@@ -4,7 +4,7 @@ import random
 import sys
 
 # module import
-sys.path.append('/home/sykim/Desktop/project_refactorize/src/features/policy_list/')
+sys.path.append('/home/shared/sykim/lab_kaggle_practice1/project_refactorize/src/features/policy_list/')
 from Sub import SubPolicy
 
 # main code

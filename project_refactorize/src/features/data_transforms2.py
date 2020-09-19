@@ -4,7 +4,7 @@ from Cutout import Cutout
 import sys
 
 # module import
-sys.path.append('/home/sykim/Desktop/project_refactorize/src/features/')
+sys.path.append('/home/shared/sykim/lab_kaggle_practice1/project_refactorize/src/features/')
 from policy_list.CIFAR10 import CIFAR10Policy
 
 # main code

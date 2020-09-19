@@ -3,7 +3,7 @@ from torch.autograd import Variable
 import sys
 
 # module import
-sys.path.append('/home/sykim/Desktop/project_refactorize/src/')
+sys.path.append('/home/shared/sykim/lab_kaggle_practice1/project_refactorize/src/')
 from features.mixup_data import mixup_data, mixup_criterion
 
 def train_one_epoch(model, criterion, train_loader, optimizer, mixup_loss, accumulation_step=2): 

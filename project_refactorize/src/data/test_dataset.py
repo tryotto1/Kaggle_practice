@@ -2,7 +2,7 @@ from torch.utils.data import Dataset, DataLoader
 from PIL import Image, ImageEnhance, ImageOps
 from pathlib import Path
 
-TEST_IMAGE_PATH = Path('/home/sykim/Desktop/project_refactorize/data/processed/3rd-ml-month-car-image-cropping-dataset/test_crop/')
+TEST_IMAGE_PATH = Path('/home/shared/sykim/lab_kaggle_practice1/project_refactorize/data/processed/3rd-ml-month-car-image-cropping-dataset/test_crop/')
 
 class TestDataset(Dataset):
     def __init__(self, df, mode='test', transforms=None, TEST_IMAGE_PATH=None):

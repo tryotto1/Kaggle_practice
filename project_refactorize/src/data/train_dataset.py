@@ -3,7 +3,7 @@ from torch.utils.data import Dataset, DataLoader
 from PIL import Image, ImageEnhance, ImageOps
 from pathlib import Path
 
-TRAIN_IMAGE_PATH = Path('/home/sykim/Desktop/project_refactorize/data/processed/3rd-ml-month-car-image-cropping-dataset/train_crop/')
+TRAIN_IMAGE_PATH = Path('/home/shared/sykim/lab_kaggle_practice1/project_refactorize/data/processed/3rd-ml-month-car-image-cropping-dataset/train_crop/')
 
 class TrainDataset(Dataset):
     def __init__(self, df, mode='train', transforms=None):
