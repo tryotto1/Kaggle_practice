@@ -58,7 +58,7 @@ def efficientNet_total(**efficientNet_kwargs):
         num_classes = 196
         skf = StratifiedKFold(n_splits=k_folds, random_state=SEED)
         start_fold = 1
-        end_fold = 1
+        end_fold = 4
         result_arr = []
 
         for i, (train_index, valid_index) in enumerate(skf.split(df_train['img_file'], df_train['class'])):
@@ -82,11 +82,7 @@ def efficientNet_total(**efficientNet_kwargs):
             if fold >= start_fold and fold <= end_fold:
                 torch.cuda.empty_cache()
 
-                model = EfficientNet.from_pretrained(model_name, num_classes=num_classes)
-                
-                if torch.cuda.device_count() > 1:
-                    print(f'use multi gpu : {torch.cuda.device_count()}')
-                    model = nn.DataParallel(model)
+                model = EfficientNet.from_pretrained(model_name, num_classes=num_classes)                
                 model.cuda()
 
                 criterion = nn.CrossEntropyLoss()
@@ -104,7 +100,7 @@ def efficientNet_total(**efficientNet_kwargs):
                     valid_dataset=valid_dataset,
                 )
 
-                num_epochs = 75
+                num_epochs = 20
                 result, lrs, score = train_model(num_epochs=num_epochs, accumulation_step=16, mixup_loss=False,
                                                 cv_checkpoint=True, fine_tune=False, weight_file_name=f'efficientnetb3_fold_{fold}.pt',
                                                 y_true=y_true, **train_kwargs)
@@ -129,7 +125,7 @@ def efficientNet_total(**efficientNet_kwargs):
         fold = f + 1
         print(f'fold {fold} prediction starts')
         
-        weight_path = f'/home/shared/sykim/lab_kaggle_practice1/project_refactorize/efficientnetb3_fold_{fold}.pt'
+        weight_path = f'/home/shared/sykim/lab_kaggle_practice1/project_refactorize/notebooks/efficientnetb3_fold_{fold}.pt'
         model.load_state_dict(torch.load(weight_path))
 
         
@@ -183,7 +179,7 @@ def efficientNet_total(**efficientNet_kwargs):
         for _ in range(tta):
             print("tta {}".format(_+1))
             
-            weight_path = f'/home/shared/sykim/lab_kaggle_practice1/project_refactorize/efficientnetb3_fold_{fold}.pt'
+            weight_path = f'/home/shared/sykim/lab_kaggle_practice1/project_refactorize/notebooks/efficientnetb3_fold_{fold}.pt'
             model.load_state_dict(torch.load(weight_path))
 
             model.eval()

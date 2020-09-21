@@ -125,7 +125,7 @@ def seresnext_total(**seresnext_kwargs):
         fold = f + 1
         print(f'fold {fold} prediction starts')
         
-        weight_path = f'/home/shared/sykim/lab_kaggle_practice1/project_refactorize/seresnext50_fold_{fold}.pt'    
+        weight_path = f'/home/shared/sykim/lab_kaggle_practice1/project_refactorize/notebooks/seresnext50_fold_{fold}.pt'    
         model.load_state_dict(torch.load(weight_path))
         model.eval()
 
@@ -173,7 +173,7 @@ def seresnext_total(**seresnext_kwargs):
         for _ in range(tta):
             print("tta {}".format(_+1))
 
-            weight_path = f'/home/shared/sykim/lab_kaggle_practice1/project_refactorize/seresnext50_fold_{fold}.pt'
+            weight_path = f'/home/shared/sykim/lab_kaggle_practice1/project_refactorize/notebooks/seresnext50_fold_{fold}.pt'
             model.load_state_dict(torch.load(weight_path))
 
             model.eval()
